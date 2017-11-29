@@ -26,14 +26,14 @@
 	</organization>
 	<licenses> 
 		<license>
-			<name>BSD license version 3</name>
+			<name>Simplified BSD Licence</name>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
 
 	<properties>
-		<license.licenseName>BSD_3</license.licenseName>
-		<license.copyrightOwners>Max-Plack Institute of Molecular Cell Biology and Genetics, Dresden</license.copyrightOwners>
+		<license.licenseName>bsd_2</license.licenseName>
+		<license.copyrightOwners>TrNdy developers</license.copyrightOwners>
 	</properties>
 
 	<developers>
@@ -68,14 +68,14 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:git:git://github.com/maarzt/gurobi-installer.git</connection>
-		<developerConnection>scm:git:git@github.com:maarzt/gurobi-installer.git</developerConnection>
+		<connection>scm:git:git://github.com/TrNdy/gurobi-installer.git</connection>
+		<developerConnection>scm:git:git@github.com:TrNdy/gurobi-installer.git</developerConnection>
 		<tag>HEAD</tag>
-		<url>https://github.com/maarzt/gurobi-installer.git</url>
+		<url>https://github.com/TrNdy/gurobi-installer.git</url>
 	</scm>
 	<issueManagement>
 		<system>GitHub Issues</system>
-		<url>https://github.com/fjug/moMA/issues</url>
+		<url>https://github.com/TrNdy/gurobi-installer/issues</url>
 	</issueManagement>
 	<ciManagement>
 		<system>None</system>
@@ -92,15 +92,6 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.scijava</groupId>
-			<artifactId>scijava-common</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.gurobi</groupId>
-			<artifactId>gurobi-jar</artifactId>
-			<version>7.5.1</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
