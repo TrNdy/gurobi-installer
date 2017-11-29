@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+	http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>org.scijava</groupId>
+		<artifactId>pom-scijava</artifactId>
+		<version>16.1.0</version>
+		<relativePath />
+	</parent>
+
+	<groupId>com.indago</groupId>
+	<artifactId>gurobi-installer</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>Gurobi Installer</name>
+	<description>Installer for Gurobi - used in MoMa and Tr2d</description>
+	<url>https://github.com/maarzt/gurobi-installer</url>
+	<inceptionYear>2017</inceptionYear>
+	<organization>
+		<name>CSBD (MPI-CBG)</name>
+		<url>www.csbdresden.de</url>
+	</organization>
+	<licenses> 
+		<license>
+			<name>BSD license version 3</name>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<properties>
+		<license.licenseName>BSD_3</license.licenseName>
+		<license.copyrightOwners>Max-Plack Institute of Molecular Cell Biology and Genetics, Dresden</license.copyrightOwners>
+	</properties>
+
+	<developers>
+		<developer>
+			<name>Matthias Arzt</name>
+			<url>www.mpi-cbg.de</url>
+			<roles><role>developer</role><role>founder</role></roles>
+			<properties><id>maarzt</id></properties>
+		</developer>
+	</developers>
+
+	<contributors>
+		<contributor>
+			<name>Florian Jug</name>
+			<url>www.mpi-cbg.de/jug</url>
+			<roles><role>developer</role></roles>
+			<properties><id>fjug</id></properties>
+		</contributor>
+		<contributor>
+			<name>Robert Haase</name>
+			<url>www.mpi-cbg.de</url>
+			<roles><role>developer</role></roles>
+			<properties><id>haesleinhuepf</id></properties>
+		</contributor>
+	</contributors>
+
+	<mailingLists>
+		<mailingList>
+			<name>ImageJ Forum</name>
+			<archive>http://forum.imagej.net/</archive>
+		</mailingList>
+	</mailingLists>
+
+	<scm>
+		<connection>scm:git:git://github.com/maarzt/gurobi-installer.git</connection>
+		<developerConnection>scm:git:git@github.com:maarzt/gurobi-installer.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/maarzt/gurobi-installer.git</url>
+	</scm>
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/fjug/moMA/issues</url>
+	</issueManagement>
+	<ciManagement>
+		<system>None</system>
+	</ciManagement>
+
+	<repositories>
+		<repository>
+			<id>imagej.public</id>
+			<url>http://maven.imagej.net/content/groups/public</url>
+		</repository>
+	</repositories>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.scijava</groupId>
+			<artifactId>scijava-common</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.gurobi</groupId>
+			<artifactId>gurobi-jar</artifactId>
+			<version>7.5.1</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>sc.fiji</groupId>
+			<artifactId>fiji-lib</artifactId>
+			<version>2.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>net.imagej</groupId>
+			<artifactId>ij</artifactId>
+			<version>1.51n</version>
+		</dependency>
+	</dependencies>
+</project>
