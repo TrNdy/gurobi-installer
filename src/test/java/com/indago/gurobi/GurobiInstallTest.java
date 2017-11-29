@@ -20,7 +20,7 @@ public class GurobiInstallTest {
 	@Ignore("this is just an example not a test")
 	@Test
 	public void testResart() {
-		System.out.println(GurobiInstaller.isRestartNecessary());
+		System.out.println(GurobiInstaller.testGurobi());
 	}
 
 	@Ignore("this is just an example not a test")

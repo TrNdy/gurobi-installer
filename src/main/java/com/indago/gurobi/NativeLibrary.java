@@ -1,5 +1,7 @@
 package com.indago.gurobi;
 
+import ij.IJ;
+
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -10,7 +12,18 @@ import java.net.URL;
  * Date: October 2016
  */
 public class NativeLibrary {
-	public static boolean copyLibraries() throws MalformedURLException {
+
+	public static boolean copyLibraries() {
+		try {
+			return tryCopyLibraries();
+		} catch (MalformedURLException e) {
+			IJ.log("The given class URL is wrong.");
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public static boolean tryCopyLibraries() throws MalformedURLException {
 		final String arch = getArchitectureShortcut();
 		final File imageJPluginsDirectory = getImageJPluginsDir();
 		final File dest = getLibraryDestination();

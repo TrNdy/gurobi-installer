@@ -4,8 +4,6 @@ import ij.IJ;
 
 import javax.swing.*;
 import java.io.File;
-import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 
 /**
  * Author: HongKee Moon (moon@mpi-cbg.de), Robert Haase(rhaase@mpi-cbg.de) Scientific Computing Facility
@@ -16,54 +14,49 @@ public class GurobiInstaller {
 
 	public static boolean install() {
 
-		boolean actuallyCopiedGurobiFiles = false;
+		if(testGurobi())
+			return true;
 
-		try {
-			actuallyCopiedGurobiFiles = NativeLibrary.copyLibraries();
-		} catch (MalformedURLException e) {
-			IJ.log("The given class URL is wrong.");
-			e.printStackTrace();
-		}
+		boolean actuallyCopiedGurobiFiles = NativeLibrary.copyLibraries();
 
-		final String gurobiLicFilePath = System.getProperty("user.home") + File.separator + "gurobi.lic";
-		final File gurobiLicFile = new File(gurobiLicFilePath);
-
-		if (!gurobiLicFile.exists()) {
+		if (!hasLicenceFile()) {
 			GurobiDialog gurobiDialog = new GurobiDialog();
 			gurobiDialog.show();
 			if (gurobiDialog.wasCanceled())
 				return false;
-
-			final String grbkeygetString = gurobiDialog.key();
-
-			Exec.runGrbgetkey(grbkeygetString.split(" ")[1]);
+			Exec.runGrbgetkey(gurobiDialog.key());
 		}
 
-		if (actuallyCopiedGurobiFiles) {
-			if (isRestartNecessary()) {
-				JOptionPane.showMessageDialog(
-						null,
-						"Installation of a module (Gurobi Optimizer) is requesting for a restart. Please restart ImageJ/FIJI.",
-						"Gurobi Installation",
-						JOptionPane.ERROR_MESSAGE);
-			}
+		boolean running = testGurobi();
+
+		if (actuallyCopiedGurobiFiles && !running) {
+			JOptionPane.showMessageDialog(
+					null,
+					"Installation of a module (Gurobi Optimizer) is requesting for a restart. Please restart ImageJ/FIJI.",
+					"Gurobi Installation",
+					JOptionPane.ERROR_MESSAGE);
 		}
 
-		return gurobiLicFile.exists();
+		return running;
 	}
 
-	static boolean isRestartNecessary() {
+	private static boolean hasLicenceFile() {
+		final String path = System.getProperty("user.home") + File.separator + "gurobi.lic";
+		return new File(path).exists();
+	}
+
+	public static boolean testGurobi() {
 		try {
 			// NB: The next lines calls "new GRBEnv( "MoMA_gurobi.log" );"
-			Class.forName("gurobi.GRBEnv").newInstance();
-			return false;
+			Object grbEnv = Class.forName("gurobi.GRBEnv").newInstance();
+			return grbEnv != null;
 		} catch (final UnsatisfiedLinkError | NoClassDefFoundError | ClassNotFoundException e) {
-			return true;
+			return false;
 		} catch (final Throwable e) {
 			boolean isGRBException = e.getClass().getName() == "gurobi.GRBException";
 			if (isGRBException)
 				IJ.log(e.getMessage());
-			return isGRBException;
+			return false;
 		}
 	}
 

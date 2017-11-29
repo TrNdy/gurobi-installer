@@ -25,7 +25,7 @@ public class GurobiDialog {
 
 	public void show() {
 		dialog.showDialog();
-		key = dialog.getNextString();
+		key = dialog.getNextString().split(" ")[1];
 	}
 
 	public boolean wasCanceled() {
