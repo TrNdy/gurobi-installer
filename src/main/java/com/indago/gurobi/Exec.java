@@ -18,28 +18,20 @@ import java.io.OutputStreamWriter;
  * Date: October 2016
  */
 public class Exec {
-	static public void runGrbgetkey(String... commands) {
-		String path = System.getProperty("user.dir") + File.separator + "lib" + File.separator;
 
-		if (IJ.isMacOSX()) {
-			path += "macosx" + File.separator + "grbgetkey";
-		} else if (IJ.isWindows()) {
-			if (IJ.is64Bit()) {
-				path += "win64" + File.separator + "grbgetkey";
-			} else {
-				path += "win32" + File.separator + "grbgetkey";
-			}
-		} else if (IJ.isLinux()) {
-			if (IJ.is64Bit()) {
-				path += "linux64" + File.separator + "grbgetkey";
-			}
-		}
+	public static void runGrbgetkey(String key) {
+		String path = NativeLibrary.getLibraryDestination() + File.separator + "grbgetkey";
+		makeExecutable(path);
+		execute(path, key);
+	}
 
+	private static void makeExecutable(String path) {
 		final File grbgetkey = new File(path);
 		grbgetkey.setExecutable(true);
+	}
 
+	private static void execute(String... commands) {
 		Process process = null;
-		commands[0] = path;
 
 		ProcessBuilder pb = new ProcessBuilder(commands);
 

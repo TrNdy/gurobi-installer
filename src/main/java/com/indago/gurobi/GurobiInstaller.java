@@ -20,9 +20,6 @@ public class GurobiInstaller {
 
 		try {
 			actuallyCopiedGurobiFiles = NativeLibrary.copyLibraries();
-		} catch (URISyntaxException e) {
-			IJ.log("Native library allocation for Fiji failed.");
-			e.printStackTrace();
 		} catch (MalformedURLException e) {
 			IJ.log("The given class URL is wrong.");
 			e.printStackTrace();
@@ -39,7 +36,7 @@ public class GurobiInstaller {
 
 			final String grbkeygetString = gurobiDialog.key();
 
-			Exec.runGrbgetkey(grbkeygetString.split(" "));
+			Exec.runGrbgetkey(grbkeygetString.split(" ")[1]);
 		}
 
 		if (actuallyCopiedGurobiFiles) {

@@ -2,7 +2,6 @@ package com.indago.gurobi;
 
 import java.io.File;
 import java.net.MalformedURLException;
-import java.net.URISyntaxException;
 import java.net.URL;
 
 /**
@@ -11,18 +10,31 @@ import java.net.URL;
  * Date: October 2016
  */
 public class NativeLibrary {
-	public static boolean copyLibraries() throws URISyntaxException, MalformedURLException {
+	public static boolean copyLibraries() throws MalformedURLException {
 		final String arch = getArchitectureShortcut();
-		URL thisJar = getJarUrlContainingClass(GurobiInstaller.class);
-		final File imageJPluginsDirectory = getParent(thisJar);
-		final File dest = new File(imageJPluginsDirectory.getParentFile(), "lib" + File.separator + arch);
+		final File imageJPluginsDirectory = getImageJPluginsDir();
+		final File dest = getLibraryDestination();
+		URL thisJar = getThisJar();
 		dest.mkdirs();
 		boolean a = FileUtils.copyResourcesRecursively(new URL(thisJar + arch), dest);
 		boolean b = FileUtils.copyResourcesRecursively(new URL(thisJar + "jar"), imageJPluginsDirectory);
 		return a || b;
 	}
 
-	private static String getArchitectureShortcut() throws MalformedURLException, URISyntaxException {
+	public static File getLibraryDestination() {
+		return new File(getImageJPluginsDir().getParentFile(),
+				"lib" + File.separator + getArchitectureShortcut());
+	}
+
+	private static File getImageJPluginsDir() {
+		return getParent(getThisJar());
+	}
+
+	private static URL getThisJar() {
+		return getJarUrlContainingClass(GurobiInstaller.class);
+	}
+
+	public static String getArchitectureShortcut() {
 		final String osName = System.getProperty("os.name").toLowerCase();
 		final String archName = System.getProperty("os.arch").toLowerCase();
 
