@@ -68,10 +68,10 @@
 	</mailingLists>
 
 	<scm>
-		<connection>scm:git:git://github.com/TrNdy/gurobi-installer.git</connection>
-		<developerConnection>scm:git:git@github.com:TrNdy/gurobi-installer.git</developerConnection>
+		<connection>scm:git:git://github.com/TrNdy/gurobi-installer</connection>
+		<developerConnection>scm:git:git@github.com:TrNdy/gurobi-installer</developerConnection>
 		<tag>HEAD</tag>
-		<url>https://github.com/TrNdy/gurobi-installer.git</url>
+		<url>https://github.com/TrNdy/gurobi-installer</url>
 	</scm>
 	<issueManagement>
 		<system>GitHub Issues</system>
