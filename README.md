@@ -1,3 +1,5 @@
+[![](https://travis-ci.org/TrNdy/gurobi-installer.svg?branch=master)](https://travis-ci.org/TrNdy/gurobi-installer)
+
 # gurobi-installer
 
 This package helps to install Gurobi from within ImageJ.
