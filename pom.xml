@@ -11,7 +11,7 @@
 
 	<groupId>com.indago</groupId>
 	<artifactId>gurobi-installer</artifactId>
-	<version>0.1.1-SNAPSHOT</version>
+	<version>0.1.1</version>
 
 	<name>Gurobi Installer</name>
 	<description>Installer for Gurobi - used in MoMa and Tr2d</description>
@@ -70,7 +70,7 @@
 	<scm>
 		<connection>scm:git:git://github.com/TrNdy/gurobi-installer</connection>
 		<developerConnection>scm:git:git@github.com:TrNdy/gurobi-installer</developerConnection>
-		<tag>HEAD</tag>
+		<tag>gurobi-installer-0.1.1</tag>
 		<url>https://github.com/TrNdy/gurobi-installer</url>
 	</scm>
 	<issueManagement>
