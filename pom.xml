@@ -11,7 +11,7 @@
 
 	<groupId>com.indago</groupId>
 	<artifactId>gurobi-installer</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.3-SNAPSHOT</version>
 
 	<name>Gurobi Installer</name>
 	<description>Installer for Gurobi - used in MoMa and Tr2d</description>
